@@ -28,11 +28,6 @@ public class CustomerController {
     private static final String template = "Hello, %s!";
     private final AtomicInteger counter = new AtomicInteger();
 
-    @GetMapping("/hi")
-    public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-        return new Greeting(counter.incrementAndGet(), String.format(template, name));
-    }
-
     @GetMapping("/customers")
     public List<Customer> getCustomers() {
         LOGGER.info("getCustomers()");
@@ -52,7 +47,6 @@ public class CustomerController {
     }
 
     // Single item
-
     @GetMapping("/customers/{id}")
     public Customer getCustomer(@PathVariable int id) throws InvalidCustomerId {
         LOGGER.info("getCustomer({})", id);

@@ -18,6 +18,9 @@ public class CustomerValidator implements Validator {
 
     @Override
     public void validate(@NotNull Object target, @NotNull Errors errors) {
+        ValidationUtils.rejectIfEmpty(errors, "firstName", "firstName.empty");
+        ValidationUtils.rejectIfEmpty(errors, "lastName", "lastName.empty");
+
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phone", "field.required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "field.required");
     }
