@@ -9,17 +9,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class GreetingController {
+public class HelloWorldController {
 
     private static final String template = "Hello, %s!";
     private final AtomicInteger counter = new AtomicInteger();
 
     // Test :-
-    // http://localhost:9000/greeting?name=User
-    // curl localhost:9000/greeting?name=User
+    // http://localhost:8080/hello-world?name=User
+    // curl localhost:8080/hello-world?name=User
 
-    @GetMapping("/greeting")
-    public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+    @GetMapping("/hello-world")
+    public Greeting sayHello(@RequestParam(value = "name", defaultValue = "World") String name) {
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
 }
